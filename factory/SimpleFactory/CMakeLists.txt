@@ -6,4 +6,4 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 project(SimpleFactory)
 
-add_executable(app SimpleFactoty.cpp main.cpp)
+add_executable(app SimpleFactory.cpp main.cpp)
