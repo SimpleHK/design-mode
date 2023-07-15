@@ -5,5 +5,6 @@ set(CMAKE_GENERATOR "Ninja")
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 project(SimpleFactory)
+aux_source_directory(${PROJECT_SOURCE_DIR} SRC_LIST)
 
-add_executable(app SimpleFactory.cpp main.cpp)
+add_executable(app ${SRC_LIST})
