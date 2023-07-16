@@ -3,17 +3,18 @@
 
 using namespace SimpleFactory;
 
-void* SmileFactory::CreateSmile(SmileType type)
+AbstractSmile* SmileFactory::CreateSmile(SmileType type)
 {
-    void* ptr = nullptr;
+    AbstractSmile* ptr = nullptr;
     switch (type) {
-        case SmileType::SHEEP:
+        using enum SimpleFactory::SmileType; // using enum c++ 20 的新特性，用来引用枚举类型
+        case SHEEP:
             ptr = new SheepSmile;
             break;
-        case SmileType::LION:
+        case LION:
             ptr = new LionSmile;
             break;
-        case SmileType::BAT:
+        case BAT:
             ptr = new BatSmile;
             break;
         default:

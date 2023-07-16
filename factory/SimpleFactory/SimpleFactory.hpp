@@ -9,31 +9,39 @@ enum class SmileType : char {
     BAT
 };
 
+class AbstractSmile
+{
+public:
+    virtual void Transform() = 0;
+    virtual void Ability() = 0;
+    virtual ~AbstractSmile() = default;
+};
+
 class SmileFactory
 {
 public:
-    void* CreateSmile(SmileType type);
+    AbstractSmile* CreateSmile(SmileType type);
 };
 
-class SheepSmile
+class SheepSmile : public AbstractSmile
 {
 public:
-    static void Transform();
-    void Ability();
+    void Transform() override;
+    void Ability() override;
 };
 
-class LionSmile
+class LionSmile : public AbstractSmile
 {
 public:
-    static void Transform();
-    void Ability();
+   void Transform() override;
+    void Ability() override;
 };
 
-class BatSmile
+class BatSmile : public AbstractSmile
 {
 public:
-    void Transform();
-    void Ability();
+    void Transform() override;
+    void Ability() override;
 };
 }
 
