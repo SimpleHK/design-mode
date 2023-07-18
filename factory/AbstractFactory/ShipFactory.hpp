@@ -91,6 +91,7 @@ class Ship
 {
 public:
     Ship(ShipBody* body, Weapon* weapon, Engine* engine);
+    std::string GetProperty();
     ~Ship();
 
 private:
@@ -99,5 +100,29 @@ private:
     Engine* mEngine = nullptr;
 };
 
+class AbstractFactory
+{
+public:
+    virtual Ship* CreateShip() = 0;
+    virtual  ~AbstractFactory() = default;
+};
+
+class BasicFactory : public AbstractFactory
+{
+public:
+    Ship* CreateShip() override;
+};
+
+class StandardFactory : public AbstractFactory
+{
+public:
+    Ship* CreateShip() override;
+};
+
+class UltimateFactory : public AbstractFactory
+{
+public:
+    Ship* CreateShip() override;
+};
 
 } // ShipFactory

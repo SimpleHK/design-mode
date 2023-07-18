@@ -2,7 +2,8 @@
 // Created by jixu on 2023/7/17.
 //
 
-#include "ShipFactory.h"
+#include "ShipFactory.hpp"
+#include <iostream>
 
 namespace ShipFactory {
     std::string WoodBody::GetShipBody() {
@@ -52,5 +53,31 @@ namespace ShipFactory {
         delete mBody;
         delete mWeapon;
         delete mEngine;
+    }
+
+    std::string Ship::GetProperty() {
+        return {
+            mBody->GetShipBody() +
+            mWeapon->GetWeapon() +
+            mEngine->GetEngine()
+        };
+    }
+
+    Ship *BasicFactory::CreateShip() {
+        Ship* ship = new Ship(new WoodBody, new Gun, new Human);
+        std::cout << "<基础型>战船生产完毕，可以下水啦。。。" << std::endl;
+        return ship;
+    }
+
+    Ship *StandardFactory::CreateShip() {
+        Ship* ship = new Ship(new IronBody, new Cannon, new Diesel);
+        std::cout << "<标准型>战船生产完毕，可以下水啦。。。" << std::endl;
+        return ship;
+    }
+
+    Ship *UltimateFactory::CreateShip() {
+        Ship* ship = new Ship(new MetaBody, new Laser, new Nuclear);
+        std::cout << "<旗舰型>战船生产完毕，可以下水啦。。。" << std::endl;
+        return ship;
     }
 } // ShipFactory

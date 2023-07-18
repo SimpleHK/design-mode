@@ -1,15 +1,13 @@
-#include "NormalFactory.hpp"
+#include "ShipFactory.hpp"
 #include <iostream>
+#include <memory>
 
-int main()
-{
-    auto factory = std::make_unique<NormalFactory::LionFactory>();
-    NormalFactory::AbstractSmile* lionSmile = factory->CreateSmile();
+int main() {
+    ShipFactory::AbstractFactory* factory = new ShipFactory::StandardFactory;
+    ShipFactory::Ship *ship = factory->CreateShip();
+    std::cout << ship->GetProperty();
 
-    lionSmile->Transform();
-    lionSmile->Ability();
-
-    std::cout << "abc" << std::endl;
-
+    delete ship;
+    delete factory;
     return 0;
 }

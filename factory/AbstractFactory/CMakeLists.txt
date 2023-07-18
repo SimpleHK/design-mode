@@ -7,4 +7,4 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 project(AbstractFactory)
 aux_source_directory(${PROJECT_SOURCE_DIR} SRC_LIST)
 
-add_executable(app ${SRC_LIST} ShipFactory.cpp ShipFactory.h)
+add_executable(app ${SRC_LIST})
